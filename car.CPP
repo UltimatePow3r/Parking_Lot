@@ -7,13 +7,12 @@ int p1,p2,user;
 char a[100][100];
 class parkcar
 {
-int t,i,j,l,k,num,temp,count;
+int t,i,j,l,k,num,temp,count,slotnum,runner;
 int m,n;
 public:
 parkcar()
 {
 t=0;
-count=0;
 }
 int park(int ,int );
 int remove();
@@ -26,19 +25,35 @@ if(n*m>t)
 printf("\e[1;1H\e[2J");
 cout<<"Current Slot status"<<'\n';
 cout<<"Note: N -> Not occupied"<<'\t'<<"X -> Occupied\n"<<'\n';
+count=1;
 for(i=0;i<m;i++)
 {
 for(j=0;j<n;j++)
 {
-cout<<i<<j<<" "<<a[i][j]<<'\t';
+cout<<count<<" "<<a[i][j]<<'\t';
+count++;
 }
 cout<<'\n';
 }
-cout<<"\n\nEnter the position where you wish to park(in rows and columns) with a space in between them \n Eg: Slot number 00 enter it as 0 0";
-cout<<"\nNote the number before the slot status refers to the postion in rows and columns";
-cin>>l>>k;
+cout<<"\n\nEnter the slot number where you wish to park you car ";
+cin>>slotnum;
+runner=slotnum;
+for(i=0;i<m;i++)
+{
+for(j=0;j<n;j++)
+{   
+    if(runner>0)
+    runner--;
+    if(runner==0)
+    {
+        l=i;
+        k=j;
+        runner --;
+    }  
+}
+}
 printf("\e[1;1H\e[2J");
-if(l*k>m*n || k>n-1 || l>m-1)
+if(l*k>m*n || k>n-1 || l>m-1 || slotnum >count )
 cout <<"There doesn't exist such slot";
 else if(a[l][k]!='N')
 {
