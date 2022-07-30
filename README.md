@@ -8,5 +8,4 @@ Solves parking lot problem
 
 Future updates to be included in the program
     1. A neat GUI 
-    2. User input taken in raw number format rather than rows and columns format.
-    3. A secure token created when user parker that car rather than a random user ID.
+    2. A secure token created when user parker that car rather than a random user ID.
